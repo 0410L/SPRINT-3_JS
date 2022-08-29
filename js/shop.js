@@ -1,5 +1,5 @@
 // Funcion para vaciar Cleancart al arrancar la pagina, para que sea una cesta vacia.
-    cleanCart();
+   cleanCart();
 
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
 var products = [
@@ -84,24 +84,32 @@ function buy(id) {
             productoCarrito = producto;
         }
     });
+
     // 2. Add found product to the cartList array
     cartList.push(productoCarrito);
+    console.log(cartList);
+    calculateTotal();
+    actualizarCesta();
+    actualizarProductosCesta();
 }
 
 // Exercise 2
 function cleanCart() {
     cartList = [];
     document.getElementById('cart_list').innerHTML="";
-    document.getElementById('total_price').innerHTML="";
+    calculateTotal();
+    actualizarCesta();
+    actualizarProductosCesta();
 }
 
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
-    var total = 0;
+    var total = 0.00;
     cartList.forEach(producto => {
         total += producto.price;
     });
+    document.getElementById('total_price').innerHTML=total;
 }
 
 // Exercise 4
@@ -128,15 +136,45 @@ function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    calculateTotal();
+    actualizarCesta();
+    actualizarProductosCesta();
 }
 
 // Exercise 8
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+    calculateTotal();
+    actualizarCesta();
+    actualizarProductosCesta();
 }
 
 function open_modal(){
 	console.log("Open Modal");
 	printCart();
 }
+
+//------- Funciones Extra-----
+function actualizarCesta(){
+    var numeritoCesta = document.getElementById('count_product');
+    numeritoCesta.innerHTML = cartList.length;
+}
+
+
+function actualizarProductosCesta(){
+    document.getElementById('cart_list').innerHTML="";
+    var tabla = "";
+    if(cartList.length >= 1) {
+        cartList.forEach(actualizar => {
+        
+            tabla += "<tr><th scope='row'> "+ actualizar.name + "</th><td>$"+ actualizar.price + "</th><td>$"+ 1 + "</th><td>$"+ actualizar.price +"</td></tr>"
+
+        });
+
+    
+    }
+    document.getElementById('cart_list').innerHTML = tabla;
+
+}
+
