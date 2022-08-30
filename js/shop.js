@@ -1,4 +1,4 @@
-// Funcion para vaciar Cleancart al arrancar la pagina, para que sea una cesta vacia.
+/// Funcion para vaciar Cleancart al arrancar la pagina, para que sea una cesta vacia.
    cleanCart();
 
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
