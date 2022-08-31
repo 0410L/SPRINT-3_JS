@@ -80,7 +80,7 @@ function buy(id) {
     var productoCarrito;
     products.forEach(producto => {
         if(id == producto.id){
-            alert("Has añadido: "+ producto.name);
+            //alert("Has añadido: "+ producto.name);
             productoCarrito = producto;
         }
     });
@@ -116,35 +116,35 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-    var entradaDeCesta = {};
-    cartList.forEach(item => {  
-        if(cart.length >=1) {
-            var existe = false;
-            cart.forEach(entradaFinal => {
-                if(item.id == entradaFinal.id){
-                   existe = true;
-                   item.quantity = item.quantity + 1;
-                   item.totalPrice = item.totalPrice + item.price;
-                }          
-            });
-            if(existe=false){
+    // var entradaDeCesta = {};
+    // cartList.forEach(item => {  
+        // if(cart.length >=1) {
+            // var existe = false;
+            // cart.forEach(entradaFinal => {
+                // if(item.id == entradaFinal.id){
+                  //  existe = true;
+                   // item.quantity = item.quantity + 1;
+                   // item.totalPrice = item.totalPrice + item.price;
+               //  }          
+           //  });
+           //  if(existe=false){
                 //!existe (significa 'no existe', es lo mismo)
 
-            }
+            // }
 
-        } 
-        else{
-            entradaDeCesta = {
-                id: item.id,
-                name: item.name,
-                price: item.price,
-                type: item.type,
-                offer: item.offer,
-                quantity:1,
-                totalPrice: item.price
-            };      
-        }
-    });
+      //   } 
+        // else{
+           //  entradaDeCesta = {
+               //  id: item.id,
+               //  name: item.name,
+               //  price: item.price,
+               //  type: item.type,
+               //  offer: item.offer,
+               //  quantity:1,
+               //  totalPrice: item.price
+           //  };      
+       //  }
+   //  });
 }
 // Exercise 5
 function applyPromotionsCart() {
