@@ -116,6 +116,11 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+ 
+
+    
+    
+    
     // var entradaDeCesta = {};
     // cartList.forEach(item => {  
         // if(cart.length >=1) {
