@@ -95,6 +95,7 @@ function buy(id) {
 // Exercise 2
 function cleanCart() {
     cartList = []; //vacia el cartlist
+    cart = []; //vacia el cart
     document.querySelector('#cart_list').innerHTML="";
     calculateTotal();
     actualizarCesta();
@@ -156,6 +157,8 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+
+
 }
 
 // Exercise 6
