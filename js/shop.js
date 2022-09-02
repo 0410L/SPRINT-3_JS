@@ -1,5 +1,5 @@
-/// Funcion para vaciar Cleancart al arrancar la pagina, para que sea una cesta vacia.
-   cleanCart();
+/// Funcion para vaciar Cleancart al arrancar la pagina, para que sea una cesta vacia (vacia el carrito de inicio)
+   cleanCart(); 
 
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
 var products = [
@@ -87,19 +87,17 @@ function buy(id) {
 
     // 2. Add found product to the cartList array
     cartList.push(productoCarrito);
-    console.log(cartList);
+    console.log(cartList); //solo es para ver en la consola de debug
     calculateTotal();
     actualizarCesta();
-    actualizarProductosCesta();
 }
 
 // Exercise 2
 function cleanCart() {
-    cartList = [];
-    document.getElementById('cart_list').innerHTML="";
+    cartList = []; //vacia el cartlist
+    document.querySelector('#cart_list').innerHTML="";
     calculateTotal();
     actualizarCesta();
-    actualizarProductosCesta();
 }
 
 // Exercise 3
@@ -117,39 +115,43 @@ function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
  
-
+    var entradaDeCesta = {}; //variable vacia
     
-    
-    
-    // var entradaDeCesta = {};
-    // cartList.forEach(item => {  
-        // if(cart.length >=1) {
-            // var existe = false;
-            // cart.forEach(entradaFinal => {
-                // if(item.id == entradaFinal.id){
-                  //  existe = true;
-                   // item.quantity = item.quantity + 1;
-                   // item.totalPrice = item.totalPrice + item.price;
-               //  }          
-           //  });
-           //  if(existe=false){
-                //!existe (significa 'no existe', es lo mismo)
-
-            // }
-
-      //   } 
-        // else{
-           //  entradaDeCesta = {
-               //  id: item.id,
-               //  name: item.name,
-               //  price: item.price,
-               //  type: item.type,
-               //  offer: item.offer,
-               //  quantity:1,
-               //  totalPrice: item.price
-           //  };      
-       //  }
-   //  });
+    cartList.forEach(item => {  //hacer un bucle de todo lo que contiene cartlist
+        if(cart.length >=1) {
+            var existe = false;
+            cart.forEach(entradaFinal => {
+                if(item.id == entradaFinal.id){
+                  existe = true;
+                   entradaFinal.quantity = entradaFinal.quantity + 1;
+                   entradaFinal.totalPrice = entradaFinal.totalPrice + entradaFinal.price;
+                }          
+           });
+                if(!existe){
+                    entradaDeCesta = {
+                        id: item.id,
+                        name: item.name,
+                        price: item.price,
+                        type: item.type,
+                        offer: item.offer,
+                        quantity:1,
+                        totalPrice: item.price
+                    };    
+                 cart.push(entradaDeCesta);
+                }
+         }else{
+           entradaDeCesta = {
+               id: item.id,
+               name: item.name,
+               price: item.price,
+               type: item.type,
+               offer: item.offer,
+               quantity:1,
+               totalPrice: item.price
+           };
+           cart.push(entradaDeCesta);   
+       }
+   });
 }
 // Exercise 5
 function applyPromotionsCart() {
@@ -159,6 +161,15 @@ function applyPromotionsCart() {
 // Exercise 6
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    document.getElementById('cart_list').innerHTML="";
+    var tabla = "";
+    if(cart.length >= 1) {
+        cart.forEach(actualizar => {
+            tabla += "<tr><th scope='row'> "+ actualizar.name + "</th><td>"+ actualizar.price + " $</th><td>"+ actualizar.quantity + "</th><td>"+ actualizar.totalPrice +" $</td></tr>"
+        });
+
+    }
+    document.getElementById('cart_list').innerHTML = tabla;
 }
 
 
@@ -171,7 +182,6 @@ function addToCart(id) {
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
     calculateTotal();
     actualizarCesta();
-    actualizarProductosCesta();
 }
 
 // Exercise 8
@@ -180,34 +190,17 @@ function removeFromCart(id) {
     // 2. Add found product to the cartList array
     calculateTotal();
     actualizarCesta();
-    actualizarProductosCesta();
 }
 
 function open_modal(){
 	console.log("Open Modal");
-	printCart();
+    generateCart(); //llena el carrito
+	printCart(); //muestra el carrito
 }
 
 //------- Funciones Extra-----
 function actualizarCesta(){
     var numeritoCesta = document.getElementById('count_product');
     numeritoCesta.innerHTML = cartList.length;
-}
-
-
-function actualizarProductosCesta(){
-    document.getElementById('cart_list').innerHTML="";
-    var tabla = "";
-    if(cartList.length >= 1) {
-        cartList.forEach(actualizar => {
-        
-            tabla += "<tr><th scope='row'> "+ actualizar.name + "</th><td>$"+ actualizar.price + "</th><td>$"+ 1 + "</th><td>$"+ actualizar.price +"</td></tr>"
-
-        });
-
-    
-    }
-    document.getElementById('cart_list').innerHTML = tabla;
-
 }
 
