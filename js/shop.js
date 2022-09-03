@@ -117,7 +117,7 @@ function generateCart() {
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
  
     var entradaDeCesta = {}; //variable vacia
-    
+    cart = []; //vacia el cart
     cartList.forEach(item => {  //hacer un bucle de todo lo que contiene cartlist
         if(cart.length >=1) {
             var existe = false;
@@ -153,11 +153,25 @@ function generateCart() {
            cart.push(entradaDeCesta);   
        }
    });
+   applyPromotionsCart(); //aplicar el descuento (por oferta aplicada segun producto)
 }
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    cart.forEach(bag =>{ 
+        if(bag.offer != null){   //!= distinto de (null), existe offer
+            if(bag.offer.number <=bag.quantity){
 
+                var descuento = bag.totalPrice * bag.offer.percent / 100;
+                bag.totalPrice = Math.round(((bag.totalPrice - descuento) + Number.EPSILON) * 100) / 100;
+
+                var totalWithDiscount = document.querySelector("#total_price").innerHTML - descuento;
+
+                document.querySelector("#total_price").innerHTML= Math.round(((totalWithDiscount) + Number.EPSILON) * 100) / 100;
+
+            }
+        }
+    });
 
 }
 
