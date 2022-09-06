@@ -83,4 +83,4 @@ function validate() {
 
 }
 
-//mirar error en cleancart (cuando el carrito no existe)
+//mirar error en cleancart (cuando el carrito no existe).
