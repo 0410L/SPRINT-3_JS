@@ -20,33 +20,50 @@ function validate() {
 	var errorLastN = document.getElementById("errorLastN");
 	
 	// Validate fields entered by the user: name, phone, password, and email
-	if(fName.value == ""){
+	
+	var texto = /^[A-Za-z]+$/; //expresion regular para validar que solo hay letras (de la A a la Z mayusculas y minusculas)
+	if(fName.value.length < 3){
 		error++;
 		errorName.style.display = "inline-block";
 	}
 
-	if(fEmail.value == ""){
+	else if(!fName.value.match(texto)){  //! se sirve para negar , en este caso la negacion es "si NO hace esto"... hace error
+		error++;
+		errorName.innerHTML = "The name can't contain numbers or special characters";
+		errorName.style.display = "inline-block";
+	}
+
+	if(fEmail.value.length < 3){
 		error++;
 		errorEmail.style.display = "inline-block";
 	}
 
-	if(fPassword.value == ""){
+	var validarPassword = /^[A-Za-z]|[0-9]$/;  //expresion regular para validar que contiene Numeros y letras.
+
+	if(fPassword.value.match(validarPassword)){
 		error++;
+		errorPassword.innerHTML = "The Password must have letters and numbers";
 		errorPassword.style.display = "inline-block";
 	}
 
-	if(fPhone.value == ""){
+	if(fPhone.value.length < 3){
 		error++;
 		errorPhone.style.display = "inline-block";
 	}
 
-	if(fAddress.value == ""){
+	if(fAddress.value.length < 3){
 		error++;
 		errorAddress.style.display = "inline-block";
 	}
 
-	if(fLastN.value == ""){
+	if(fLastN.value.length < 3){
 		error++;
+		errorLastN.style.display = "inline-block";
+	}
+
+	else if(!fLastN.value.match(texto)){  //! se sirve para negar , en este caso la negacion es "si NO hace esto"... hace error
+		error++;
+		errorLastN.innerHTML = "The name can't contain numbers or special characters"
 		errorLastN.style.display = "inline-block";
 	}
 	 
