@@ -33,11 +33,7 @@ function validate() {
 		errorName.style.display = "inline-block";
 	}
 
-	if(fEmail.value.length < 3){
-		error++;
-		errorEmail.style.display = "inline-block";
-	}
-
+	
 	var validarPassword = /^[A-Za-z]|[0-9]$/;  //expresion regular para validar que contiene Numeros y letras.
 
 	if(fPassword.value.match(validarPassword)){
