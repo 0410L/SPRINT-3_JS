@@ -33,7 +33,18 @@ function validate() {
 		errorName.style.display = "inline-block";
 	}
 
-	
+	var valideEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	if(fEmail.value.length < 3){
+		error++;
+		errorEmail.style.display = "inline-block";
+	}
+
+	else if(!fEmail.value.match(valideEmail)){
+		error++;
+		errorEmail.innerHTML = "The Email doesn't exist";
+		errorEmail.style.display = "inline-block";
+	}
+
 	var validarPassword = /^[A-Za-z]|[0-9]$/;  //expresion regular para validar que contiene Numeros y letras.
 
 	if(fPassword.value.match(validarPassword)){
