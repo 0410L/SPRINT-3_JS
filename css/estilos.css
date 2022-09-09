@@ -1,0 +1,25 @@
+.parallax {
+    /* The image used */
+    background-image: url("https://img.freepik.com/free-vector/abstract-blue-geometric-shapes-background_1035-17545.jpg");
+  
+    /* Set a specific height */
+    min-height: 500px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card {
+    border: 0 px solid black;
+    border-radius: 20px;
+}
+
+.card-img-top {
+    border: 0 px solid black;
+    border-radius: 20px 20px 0 0;
+}
+
+
