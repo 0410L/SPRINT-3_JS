@@ -18,7 +18,14 @@ function validate() {
 	var errorPhone = document.getElementById("errorPhone");
 	var errorAddress = document.getElementById("errorAddress");
 	var errorLastN = document.getElementById("errorLastN");
-	
+
+	errorName.style.display = "none";
+	errorEmail.style.display = "none";
+	errorPassword.style.display = "none";
+	errorPhone.style.display = "none";
+	errorAddress.style.display = "none";
+	errorLastN.style.display = "none";
+
 	// Validate fields entered by the user: name, phone, password, and email
 	
 	var texto = /^[A-Za-z]+$/; //expresion regular para validar que solo hay letras (de la A a la Z mayusculas y minusculas)

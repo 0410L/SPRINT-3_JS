@@ -87,7 +87,7 @@ function buy(id) {
 
     // 2. Add found product to the cartList array
     cartList.push(productoCarrito);
-    console.log(cartList); //solo es para ver en la consola de debug
+    //console.log(cartList); //solo es para ver en la consola de debug
     calculateTotal();
     actualizarCesta();
 }
@@ -182,7 +182,7 @@ function printCart() {
     var tabla = "";
     if(cart.length >= 1) {
         cart.forEach(actualizar => {
-            tabla += "<tr><th scope='row'> "+ actualizar.name + "</th><td>"+ actualizar.price + " $</th><td>"+ actualizar.quantity + "</th><td>"+ actualizar.totalPrice +" $</td></tr>"
+            tabla += "<tr><th scope='row'> "+ actualizar.name + "</th><td>"+ actualizar.price + " $</th><td>"+ actualizar.quantity +"</th><td>"+ actualizar.totalPrice +" $<button class='btn-danger btnDeleteProducto' type='button' onclick= 'removeFromCart("+actualizar.id+")'>-1</button></td></tr>";
         });
 
     }
@@ -204,13 +204,24 @@ function addToCart(id) {
 // Exercise 8
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
+    var borrado = false;
+    cartList.forEach(prod =>{   //bucle de cartlist para detectar el mismo producto
+        if(prod.id = id && !borrado){
+            var indice = cartList.indexOf(prod); //indexOf devuelve la posición del elemento en un array. Si indexOf no encuentra el elemento devuelve -1
+            cartList.splice(indice, 1); //borra un elemento de la array
+            borrado = true;
+
+        }
+    });
+
+    printCart();
     // 2. Add found product to the cartList array
     calculateTotal();
     actualizarCesta();
 }
 
 function open_modal(){
-	console.log("Open Modal");
+	//console.log("Open Modal");
     generateCart(); //llena el carrito
 	printCart(); //muestra el carrito
 }
