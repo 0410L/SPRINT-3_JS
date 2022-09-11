@@ -47,11 +47,17 @@ function validate() {
 
 	var validarPassword = /^[A-Za-z]|[0-9]$/;  //expresion regular para validar que contiene Numeros y letras.
 
-	if(fPassword.value.match(validarPassword)){
+	if(fPassword.value.length < 3){
+		error++;
+		errorPassword.style.display = "inline-block";
+	}
+
+	else if(fPassword.value.match(validarPassword)){
 		error++;
 		errorPassword.innerHTML = "The Password must have letters and numbers";
 		errorPassword.style.display = "inline-block";
 	}
+
 
 	if(fPhone.value.length < 3){
 		error++;
