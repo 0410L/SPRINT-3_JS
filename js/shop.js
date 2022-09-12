@@ -206,14 +206,15 @@ function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     var borrado = false;
     cartList.forEach(prod =>{   //bucle de cartlist para detectar el mismo producto
-        if(prod.id = id && !borrado){
+        if(prod.id == id && !borrado){
             var indice = cartList.indexOf(prod); //indexOf devuelve la posición del elemento en un array. Si indexOf no encuentra el elemento devuelve -1
             cartList.splice(indice, 1); //borra un elemento de la array
             borrado = true;
 
         }
     });
-
+    
+    generateCart();
     printCart();
     // 2. Add found product to the cartList array
     calculateTotal();

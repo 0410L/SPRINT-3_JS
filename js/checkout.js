@@ -19,7 +19,7 @@ function validate() {
 	var errorAddress = document.getElementById("errorAddress");
 	var errorLastN = document.getElementById("errorLastN");
 
-	errorName.style.display = "none";
+	errorName.style.display = "none"; 
 	errorEmail.style.display = "none";
 	errorPassword.style.display = "none";
 	errorPhone.style.display = "none";
