@@ -19,15 +19,15 @@
 }
 
 #clothes, #grocery {
-    background-image: url("../images/parallax.png");
+    background-image: url("../images/parallax.webp");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#beauty {
-    background-image: url("../images/parallaxB.png");
+#beauty, #itAcademyShop {
+    background-image: url("../images/parallaxB.webp");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
